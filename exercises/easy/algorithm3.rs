@@ -5,9 +5,18 @@
 */
 
 
-fn sort<T>(array: &mut [T]){
+fn sort<T: PartialOrd>(array: &mut [T]){
 	//TODO
+    let n = array.len();
+    for i in 1..n {
+        let mut j = i;
+        while j > 0 && array[j - 1] > array[j] {
+            array.swap(j - 1, j);
+            j -= 1;
+        }
+    }
 }
+
 #[cfg(test)]
 mod tests {
     use super::*;
